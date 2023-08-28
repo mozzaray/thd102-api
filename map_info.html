@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #map{
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    
+
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy5_SjUbRXayyiYVb9QaQSlRUW6CSM5Io&callback=initMap"></script>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+                // The location of Uluru  , 
+                const bermuda = { lat: 25.001398376679354, lng: -70.99974286266401 };
+                // The map, centered at Uluru
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 5,
+                    center: bermuda,
+                });
+
+                const marker = new google.maps.Marker({
+                    position: bermuda,
+                    map: map,
+                    title: "百慕達三角"
+                });
+
+                // 自訂標籤
+                const contentStr = "<h1>百慕達三角</h1><p>藍天藍 白雲白</p><a target='_blank' href='https://zh.wikipedia.org/zh-tw/%E7%99%BE%E6%85%95%E9%81%94%E4%B8%89%E8%A7%92'>點我</a>"
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentStr,
+                    ariaLabel: "Bermuda Triangle",
+                });
+                
+                marker.addListener("click", () => {
+                    infowindow.open({
+                    anchor: marker,
+                    map,
+                    });
+                });
+            }
+
+            window.initMap = initMap;
+    </script>
+  </body>
+</html>
