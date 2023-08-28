@@ -5,6 +5,10 @@
   <title>Google Maps API 叢集標記範例</title>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy5_SjUbRXayyiYVb9QaQSlRUW6CSM5Io"></script>
   <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+
+  <style>
+
+  </style>
 </head>
 <body>
   <div id="map" style="width: 800px; height: 600px;"></div>
@@ -28,6 +32,7 @@
       const info = ["A咖", "神祕的地方", "有黑膠", "猜猜這是哪", "你家", "有蝦子"];
 
       const infowindow = new google.maps.InfoWindow();
+      const imgs = "./img/pin.png";
 
       // 創建標記
       const markers = locations.map((position, i) => {
@@ -36,7 +41,8 @@
         const marker = new google.maps.Marker({
           position,
           // label: labels[i]
-          label: `${i + 1}` // 使用數字作為標記的標籤
+          label: `${i + 1}`, // 使用數字作為標記的標籤
+          icon: imgs
 
         });
 
